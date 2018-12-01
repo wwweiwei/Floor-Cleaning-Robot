@@ -7,7 +7,6 @@
 
 using namespace std;
 
-// global variable
 int m, n, length;
 vector<vector<int>> pre;
 vector<vector<int>> array_2D;
@@ -93,10 +92,17 @@ int main(int argc, char *argv[])
     map2.assign(map1.begin(), map1.end()); //copy map1 to map2
 
     int org_x=x; int org_y=y;
+
+    max=length*2; //enough large max
+    x=org_x; y=org_y;
+    map1.assign(map2.begin(), map2.end()); //copy map2 to map1
+
     int ok_mask=15; // 1+2+4+8
     max=length*2; //enough large max
-    while ((max-1)*2>length)
+    int count1=0;
+    while ((max-1)*2>length && count1<4)
     {
+        count1++;
         x=org_x; y=org_y;
         map1.assign(map2.begin(), map2.end()); //copy map2 to map1
 
@@ -121,6 +127,7 @@ int main(int argc, char *argv[])
     cout << "find max:"<<max <<" length="<<length<<endl;
 
     }
+
 /*
    for(int i=1;i<=m;i++)
     {
@@ -129,6 +136,7 @@ int main(int argc, char *argv[])
         cout << endl;
     }
 */
+
     while (max!=1){
         list1.clear();
         step=map1[x][y];
